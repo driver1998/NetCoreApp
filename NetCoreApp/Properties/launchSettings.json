@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "NetCoreApp (Package)": {
+      "commandName": "MsixPackage",
+      "doNotLaunchApp": false
+    },
+    "NetCoreApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
