@@ -15,4 +15,4 @@ Markup based on C# Markup 2 by [Vincent Hoogendoorn](https://github.com/VincentH
 
 [My fork to C# Markup](https://github.com/driver1998/CSharpForMarkup/tree/master/src/CSharpMarkup.SystemXaml).
 
-MSIX packaging is inspired by [wherewhere](https://github.com/wherewhere)'s ab(use) of Windows App SDK build targets, based on [CoreAppUWP](https://github.com/wherewhere/CoreAppUWP).
+MSIX packaging is inspired by [wherewhere](https://github.com/wherewhere)'s (ab)use of Windows App SDK build targets, based on [CoreAppUWP](https://github.com/wherewhere/CoreAppUWP).
