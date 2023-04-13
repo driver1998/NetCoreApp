@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <UsingTask TaskName="NetCoreAppUpdateEntryPoint" TaskFactory="CodeTaskFactory"
+        AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <Projects ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+            <AppxManifestPath ParameterType="System.String" Required="true" />
+            <EntryPointProjectFullPath ParameterType="System.String" Required="true" />
+            <EntryPointProjectUniqueName ParameterType="System.String" Required="true" />
+			<EntryPoint ParameterType="System.String" Required="true"></EntryPoint>
+        </ParameterGroup>
+        <Task>
+            <Reference Include="System.Xml" />
+            <Reference Include="System.Xml.Linq" />
+            <Using Namespace="System.Xml.Linq" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+var entryProject = Projects.FirstOrDefault(p => 
+    p.ItemSpec.Equals(EntryPointProjectFullPath, StringComparison.OrdinalIgnoreCase) || 
+    p.ItemSpec.Equals(EntryPointProjectUniqueName, StringComparison.OrdinalIgnoreCase)
+);
+
+if (entryProject == null)
+{
+    Log.LogError("No entry point project found");
+    return false;
+}
+
+if (string.IsNullOrEmpty(EntryPoint))
+{
+    Log.LogError("New entry point is not specified, will not update");
+    return false;
+}
+
+try
+{
+    var xdoc = XDocument.Load(AppxManifestPath);
+    var ns = xdoc.Root.Name.Namespace;
+    var application = xdoc.Root.Descendants(ns + "Application").FirstOrDefault();
+    if (application != null)
+    {
+        var xattr = application.Attribute("EntryPoint");
+        if (xattr != null)
+        {
+            xattr.SetValue(EntryPoint);
+        }
+        else
+        {
+            Log.LogWarning("No entry point found in application node.");
+        }
+    }
+    else
+    {
+        Log.LogWarning("No application node found in Appx Manifest.");
+    }
+    xdoc.Save(AppxManifestPath);
+}
+catch (Exception)
+{
+        Log.LogError("Failed to load Appx Manifest.");
+        return false;
+}
+        ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+    <Target Name="NetCoreAppEntryPointOverride" AfterTargets="_GenerateDesktopBridgeAppxManifest">
+        <Message Importance="high" Text="NetCoreAppEntryPointOverride" />
+        <Message Importance="high" Text="EntryPointProject: '$(EntryPointProjectUniqueName)'" />
+        <Message Importance="high" Text="NewEntryPoint: '$(EntryPointOverride)'" />
+        <NetCoreAppUpdateEntryPoint
+            Projects="@(ProjectReference)"
+            AppxManifestPath="%(FinalAppxManifest.Identity)"
+            EntryPointProjectFullPath="$(EntryPointProjectFullPath)"
+            EntryPointProjectUniqueName="$(EntryPointProjectUniqueName)"
+			EntryPoint="$(EntryPointOverride)">
+        </NetCoreAppUpdateEntryPoint>
+    </Target>
+</Project>
