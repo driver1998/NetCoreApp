@@ -1,0 +1,6 @@
+﻿<wuxc:UserControl
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:wuxc="using:Windows.UI.Xaml.Controls"
+  x:Class="NetCoreApp.MainPageUserControl">
+</wuxc:UserControl>

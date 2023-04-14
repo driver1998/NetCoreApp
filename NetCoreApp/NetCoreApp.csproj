@@ -1,4 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="$(MSBuildProjectDirectory)\..\Props\Mile.Xaml.props" />
+
 	<PropertyGroup>		
 		<OutputType>WinExe</OutputType>
 		<Platforms>x86;x64;ARM64</Platforms>		
@@ -7,14 +9,11 @@
 		<TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 		<LangVersion>latest</LangVersion>
+		<MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>
 	</PropertyGroup>
 
 	<ItemGroup>
       <PackageReference Include="Dongle.WindowsSDK.NET" Version="10.0.19041.4" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\CSharpForMarkup\src\CSharpMarkup.SystemXaml\CSharpMarkup.SystemXaml.csproj" />
 	</ItemGroup>
 
 </Project>
