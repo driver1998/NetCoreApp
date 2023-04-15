@@ -9,34 +9,6 @@ namespace NetCoreApp
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private Color color;
-        public Color Color
-        {
-            get => color;
-            set
-            {
-                if (value != color)
-                {
-                    color = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        private double fontSize = 24.0;
-        public double FontSize
-        {
-            get => fontSize;
-            set
-            {
-                if (value != fontSize)
-                {
-                    fontSize = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
         private string username;
         public string UserName 
         {

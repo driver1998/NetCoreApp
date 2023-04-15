@@ -1,6 +1,21 @@
-﻿<wuxc:UserControl
+﻿<UserControl
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:wuxc="using:Windows.UI.Xaml.Controls"
   x:Class="NetCoreApp.MainPageUserControl">
-</wuxc:UserControl>
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            <TextBox Text="{Binding UserName, Mode=TwoWay}" />
+            <TextBlock FontSize="{Binding ElementName=slider, Path=Value}" Text="{Binding Message, Mode=OneWay}">
+                <TextBlock.Foreground>
+                    <!--<SolidColorBrush Color="{Binding ElementName=colorPicker, Path=Color}" />-->
+                </TextBlock.Foreground>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btn1">Say Hello</Button>
+                <Button x:Name="btn2">About</Button>
+            </StackPanel>
+            <Slider x:Name="slider" Minimum="1" Maximum="100" Value="32" />
+            <!--<ColorPicker x:Name="colorPicker" Color="Blue" />-->
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

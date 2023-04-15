@@ -9,15 +9,16 @@ using Windows.UI.Xaml.Controls;
 
 namespace NetCoreApp
 {
-    public class App : Application
+    public partial class App : Application
     {
         public App()
         {
+            this.InitializeComponent();
         }
 
         protected override void OnWindowCreated(WindowCreatedEventArgs args)
         {
-            args.Window.Content = new MainViewUserControl();
+            args.Window.Content = new MainPageUserControl();
             args.Window.Activate();
         }
         protected override void OnLaunched(LaunchActivatedEventArgs e)

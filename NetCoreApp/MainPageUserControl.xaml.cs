@@ -9,7 +9,13 @@ namespace NetCoreApp
 {
     public partial class MainPageUserControl : UserControl
     {
-        public MainViewModel ViewModel { get; set; }
+        public MainPageUserControl()
+        {
+            this.InitializeComponent();
+            this.DataContext = new MainViewModel();
+        }
+
+
     }
 }
 
