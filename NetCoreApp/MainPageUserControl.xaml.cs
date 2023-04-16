@@ -22,12 +22,9 @@ namespace NetCoreApp
                 UserName = "UWP"
             };
             ViewModel.SayHello();
-            
-            var b1 = this.FindName("btn1") as Button;
-            b1.Command = ViewModel.SayHelloCommand;
 
-            var b2 = this.FindName("btn2") as Button;
-            b2.Click += async (s, e) =>
+            this.btn1.Command = ViewModel.SayHelloCommand;            
+            this.btn2.Click += async (s, e) =>
             {
                 StringBuilder builder = new();
                 builder.AppendLine(RuntimeInformation.FrameworkDescription);

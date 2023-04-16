@@ -18,6 +18,11 @@ namespace NetCoreApp
             action = _action;
             canExecute = _canExecute;
         }
+
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, new EventArgs());
+        }
         
         public bool CanExecute(object parameter)
         {

@@ -4,18 +4,18 @@
   x:Class="NetCoreApp.MainPageUserControl">
     <ScrollViewer>
         <StackPanel Orientation="Vertical">
-            <TextBox Text="{Binding UserName, Mode=TwoWay}" />
-            <TextBlock FontSize="{Binding ElementName=slider, Path=Value}" Text="{Binding Message, Mode=OneWay}">
-                <!--<TextBlock.Foreground>
+            <TextBox Text="{x:Bind ViewModel.UserName, Mode=TwoWay}" />
+            <TextBlock FontSize="{Binding ElementName=slider, Path=Value}" Text="{x:Bind ViewModel.Message, Mode=OneWay}">
+                <TextBlock.Foreground>
                     <SolidColorBrush Color="{Binding ElementName=colorPicker, Path=Color}" />
-                </TextBlock.Foreground>-->
+                </TextBlock.Foreground>
             </TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btn1">Say Hello</Button>
                 <Button x:Name="btn2">About</Button>
             </StackPanel>
             <Slider x:Name="slider" Minimum="1" Maximum="100" Value="32" />
-            <ColorPicker x:Name="colorPicker"></ColorPicker>
+            <ColorPicker x:Name="colorPicker" Color="Blue"></ColorPicker>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
