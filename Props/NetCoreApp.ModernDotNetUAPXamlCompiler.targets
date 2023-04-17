@@ -25,6 +25,7 @@
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.InteropServices.WindowsRuntime.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.WindowsRuntime.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.WindowsRuntime.UI.Xaml.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Threading.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Threading.Tasks.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Xml.dll" />
