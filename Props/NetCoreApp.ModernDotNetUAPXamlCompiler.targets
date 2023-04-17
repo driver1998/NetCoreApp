@@ -8,6 +8,10 @@
 	<!-- XAML Compiler expects a .NET Framework runtime (Or .NET Core with native WinRT Interop) in ReferencePath -->
 	<!-- So we have to emulate that -->
 	<Target Name="XamlCompilePass1ReferenceWrap" BeforeTargets="MarkupCompilePass1">
+		<PropertyGroup>
+			<DefineConstantsBackup>$(DefineConstants)</DefineConstantsBackup>
+			<DefineConstants>$(DefineConstants);COMPILING_XAML</DefineConstants>
+		</PropertyGroup>
 		<ItemGroup>
 			<!-- Make a backup for the current ReferencePath first. -->
 			<RefernecePathBackup Include="@(ReferencePath)" />
@@ -44,6 +48,9 @@
 
 	<!-- Restore the Modern .NET References -->
 	<Target Name="XamlCompilePass2AfterReferenceWrap" AfterTargets="MarkupCompilePass2">
+		<PropertyGroup>
+			<DefineConstants>$(DefineConstantsBackup)</DefineConstants>
+		</PropertyGroup>
 		<ItemGroup>
 			<ReferencePath Remove="@(ReferencePath)" />
 			<ReferencePath Include="@(RefernecePathBackup)" />
