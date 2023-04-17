@@ -7,7 +7,7 @@
 
 	<!-- XAML Compiler expects a .NET Framework runtime (Or .NET Core with native WinRT Interop) in ReferencePath -->
 	<!-- So we have to emulate that -->
-	<Target Name="XamlCompilePass1ReferenceWrap" BeforeTargets="MarkupCompilePass1">
+	<Target Name="XamlCompilePass1ReferenceWrap" BeforeTargets="MarkupCompilePass1;DesignTimeMarkupCompilation">
 		<PropertyGroup>
 			<DefineConstantsBackup>$(DefineConstants)</DefineConstantsBackup>
 			<DefineConstants>$(DefineConstants);COMPILING_XAML</DefineConstants>
@@ -16,9 +16,11 @@
 			<!-- Make a backup for the current ReferencePath first. -->
 			<RefernecePathBackup Include="@(ReferencePath)" />
 
+			<ReferencePathCsWinRT Include="@(ReferencePath)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Identity)', `.\\dongle.windowssdk.net\\.`))"/>
+			
 			<!-- A minimal set of the .NET Framework BCL to get this project to pass XAML compile -->
 			<!-- You may need to add more DLLs for your project. -->
-			<ReferencePathNetFx Include="$(NetFxPath)\Microsoft.CSharp.dll" />
+			<!--<ReferencePathNetFx Include="$(NetFxPath)\Microsoft.CSharp.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\mscorlib.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Configuration.dll" />
@@ -26,28 +28,35 @@
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Net.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Net.Http.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.ObjectModel.dll" />
-			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.dll" />-->
+			<!--<ReferencePathNetFx Include="$(NetFxPath)\mscorlib.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.InteropServices.WindowsRuntime.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.WindowsRuntime.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.WindowsRuntime.UI.Xaml.dll" />-->
+			<!--<ReferencePathNetFx Include="$(NetFxPath)\System.Threading.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Threading.Tasks.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Xml.dll" />
+			<ReferencePathNetFx Include="$(NetFxPath)\System.Xml.Linq.dll" />-->
+
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.InteropServices.WindowsRuntime.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.WindowsRuntime.dll" />
 			<ReferencePathNetFx Include="$(NetFxPath)\System.Runtime.WindowsRuntime.UI.Xaml.dll" />
-			<ReferencePathNetFx Include="$(NetFxPath)\System.Threading.dll" />
-			<ReferencePathNetFx Include="$(NetFxPath)\System.Threading.Tasks.dll" />
-			<ReferencePathNetFx Include="$(NetFxPath)\System.Xml.dll" />
-			<ReferencePathNetFx Include="$(NetFxPath)\System.Xml.Linq.dll" />
+			<ReferencePathNetFx Include="D:\Nuget\.nuget\packages\dongle.windowssdk.net\10.0.19041.4\lib\net6.0-windows10.0.19041\WinRT.Runtime.dll"/>
 
 			<!-- Add Windows.winmd for your selected target Windows version. -->
-			<ReferencePathNetFx Include="$(WindowsSdkPath)UnionMetadata\$(TargetPlatformVersion)\Windows.winmd" />
+			<ReferencePathWinMD Include="$(WindowsSdkPath)UnionMetadata\$(TargetPlatformVersion)\Windows.winmd" />
 			
 			<!-- Clean the current ReferencePath and replace it with the .NET Framework set, and Windows.winmd -->
 			<!-- TODO: How to handle other library references? -->
-			<ReferencePath Remove="@(ReferencePath)" />
+			<ReferencePath Remove="@(ReferencePathCsWinRT)" />
+			<ReferencePath Include="@(ReferencePathWinMD)" />
 			<ReferencePath Include="@(ReferencePathNetFx)" />
 		</ItemGroup>
 		<Message Importance="high" Text="XamlCompilePass1ReferenceWrap"></Message>
 	</Target>
 
 	<!-- Restore the Modern .NET References -->
-	<Target Name="XamlCompilePass2AfterReferenceWrap" AfterTargets="MarkupCompilePass2">
+	<Target Name="XamlCompilePass2AfterReferenceWrap" AfterTargets="MarkupCompilePass2;DesignTimeMarkupCompilation">
 		<PropertyGroup>
 			<DefineConstants>$(DefineConstantsBackup)</DefineConstants>
 		</PropertyGroup>

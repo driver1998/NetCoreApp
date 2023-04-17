@@ -24,15 +24,17 @@ namespace NetCoreApp
             ViewModel.SayHello();
 
             this.btn1.Command = ViewModel.SayHelloCommand;
-            this.btn2.Click += async (s, e) =>
-            {
-                StringBuilder builder = new();
-                builder.AppendLine(RuntimeInformation.FrameworkDescription);
-                builder.AppendLine(RuntimeInformation.OSDescription);
-                builder.Append($"ProcessArchitecture: {RuntimeInformation.ProcessArchitecture.ToString()}");
-                MessageDialog dialog = new(builder.ToString(), "About");
-                await dialog.ShowAsync();
-            };
+            //this.btn2.Click += async (s, e) =>
+            //{
+            //    StringBuilder builder = new();
+            //    builder.AppendLine(RuntimeInformation.FrameworkDescription);
+            //    builder.AppendLine(RuntimeInformation.OSDescription);
+            //    builder.Append($"ProcessArchitecture: {RuntimeInformation.ProcessArchitecture.ToString()}");
+            //    MessageDialog dialog = new(builder.ToString(), "About");
+            //    await dialog.ShowAsync();
+            //};
+
+            this.btn2.add_Click(null);
         }
 
 

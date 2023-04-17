@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="$(MSBuildProjectDirectory)\..\Props\Mile.Xaml.props" />
-	<Import Project="$(MSBuildProjectDirectory)\..\Props\NetCoreApp.ModernDotNetUAPXamlCompiler.targets"/>
+	<Import Project="$(MSBuildProjectDirectory)\..\Props\NetCoreApp.ModernDotNetUAPXamlCompiler.targets" />
 	<PropertyGroup>
-		<DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+		<DefineConstants>DISABLE_XAML_GENERATED_MAIN;DISABLE_XAML_GENERATED_BINDING_DEBUG_OUTPUT;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION</DefineConstants>
 		<OutputType>WinExe</OutputType>
 		<Platforms>x86;x64;ARM64</Platforms>		
 		<RootNamespace>NetCoreApp</RootNamespace>
@@ -11,11 +11,21 @@
 		<TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 		<LangVersion>latest</LangVersion>
-		<MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>		
+		<MileXamlEnableIntelliSenseForDotNet>true</MileXamlEnableIntelliSenseForDotNet>
 	</PropertyGroup>
 
 	<ItemGroup>
       <PackageReference Include="Dongle.WindowsSDK.NET" Version="10.0.19041.4" />
 	</ItemGroup>
-
+	<Target Name="RestoreTargetPlatformIdentifierA" BeforeTargets="BeforeBuild;_CheckForUnsupportedTargetPlatformIdentifier">
+		<PropertyGroup>
+			<TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+			
+		</PropertyGroup>
+		<ItemGroup>
+			<SdkSupportedTargetPlatformVersion Include="10.0.19041.0"></SdkSupportedTargetPlatformVersion>
+		</ItemGroup>
+		<Message Importance="high" Text="TargetPlatformIdentifier: $(TargetPlatformIdentifier)"></Message>
+		<Message Importance="high" Text="SdkSupportedTargetPlatformVersion: @(SdkSupportedTargetPlatformVersion)"></Message>
+	</Target>
 </Project>
