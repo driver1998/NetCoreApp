@@ -23,7 +23,7 @@ namespace NetCoreApp
             };
             ViewModel.SayHello();
 
-            this.btn1.Command = ViewModel.SayHelloCommand;            
+            this.btn1.Command = ViewModel.SayHelloCommand;
             this.btn2.Click += async (s, e) =>
             {
                 StringBuilder builder = new();

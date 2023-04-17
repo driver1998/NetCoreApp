@@ -8,6 +8,12 @@ using Windows.UI;
 
 namespace NetCoreApp
 {
+    public struct ListItem
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
+
     public class MainViewModel : INotifyPropertyChanged
     {
         private string username;
@@ -40,6 +46,8 @@ namespace NetCoreApp
 
         public ICommand SayHelloCommand { get; }
 
+        public List<ListItem> Items { get; }
+
         public void SayHello()
         {
             Message = $"Hello, {username}";
@@ -48,6 +56,11 @@ namespace NetCoreApp
         public MainViewModel()
         {
             SayHelloCommand = new RelayCommand(_ => SayHello(), _ => true);
+            Items = new()
+            {
+                new() { Name = "hello world", Value = "It's long overdude" },
+                new() { Name = "UWP on .NET 7", Value = "yeah it really works" },
+            };
         }
 
         private void RaisePropertyChanged([CallerMemberName]string name = "")
