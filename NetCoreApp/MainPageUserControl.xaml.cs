@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
@@ -26,12 +27,19 @@ namespace NetCoreApp
             this.btn1.Command = ViewModel.SayHelloCommand;
             this.btn2.Click += async (s, e) =>
             {
+                bool isCoreWindow = CoreWindow.GetForCurrentThread() != null;                
                 StringBuilder builder = new();
-                builder.AppendLine(RuntimeInformation.FrameworkDescription);
-                builder.AppendLine(RuntimeInformation.OSDescription);
+                builder.AppendLine($"IsCoreWindow: {isCoreWindow}");
+                builder.AppendLine($"Runtime: {RuntimeInformation.FrameworkDescription}");
+                builder.AppendLine($"OS: {RuntimeInformation.OSDescription}");
                 builder.Append($"ProcessArchitecture: {RuntimeInformation.ProcessArchitecture.ToString()}");
-                MessageDialog dialog = new(builder.ToString(), "About");
-                await dialog.ShowAsync();
+                var contentDialog = new ContentDialog
+                {
+                    Title = "About",
+                    Content = builder.ToString(),
+                    CloseButtonText = "OK"
+                };
+                await contentDialog.ShowAsync();
             };
         }
 
