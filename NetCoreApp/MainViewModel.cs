@@ -59,7 +59,7 @@ namespace NetCoreApp
             Items = new()
             {
                 new() { Name = "hello world", Value = "It's long overdude" },
-                new() { Name = "UWP on .NET 7", Value = "yeah it really works" },
+                new() { Name = "UWP on .NET 8", Value = "yeah it really works" },
                 new() { Name = "Some .NET 5+ stuff?", Value = DateOnly.FromDateTime(DateTime.Now).ToString() },
             };
         }
