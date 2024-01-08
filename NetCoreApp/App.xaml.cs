@@ -23,6 +23,7 @@ namespace NetCoreApp
         }
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            
         }
     }
 }

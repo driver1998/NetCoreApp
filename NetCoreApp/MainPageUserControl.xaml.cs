@@ -85,6 +85,10 @@ namespace NetCoreApp
                 };
                 await contentDialog.ShowAsync();
             };
+            this.btn3.Click += (s, e) =>
+            {
+                this.tip.IsOpen = true;
+            };
         }
     }
 }

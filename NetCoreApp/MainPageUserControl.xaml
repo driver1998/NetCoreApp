@@ -2,7 +2,8 @@
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Class="NetCoreApp.MainPageUserControl"
-  xmlns:local="using:NetCoreApp">
+  xmlns:local="using:NetCoreApp"
+  xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
     <UserControl.Resources>
         <local:NegativeDoubleConverter x:Name="NegativeDoubleConverter"/>
     </UserControl.Resources>
@@ -17,6 +18,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btn1">Say Hello</Button>
                 <Button x:Name="btn2">About</Button>
+                <Button x:Name="btn3">Show TeachingTip</Button>
             </StackPanel>
             <Slider x:Name="slider" Minimum="1" Maximum="100" Value="32" />
             <TextBlock Padding="0,0,0,8">
@@ -43,7 +45,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
-            
+            <muxc:TeachingTip x:Name="tip" Target="{x:Bind btn3}" Title="WinUI🎉" Subtitle="This is TeachingTip from WinUI 2."></muxc:TeachingTip>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

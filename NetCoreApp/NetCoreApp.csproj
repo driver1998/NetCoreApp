@@ -10,10 +10,12 @@
 		<LangVersion>latest</LangVersion>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
-
+	
 	<ItemGroup>
-		<PackageReference Include="Dongle.WindowsSDK.NET" Version="10.0.22621.756" />
+		<PackageReference Include="Dongle.Windows.CsWinRT" Version="3.0.0-wux.2" />
+		<PackageReference Include="Dongle.WindowsSDK.NET" Version="10.0.22621.756" />		
 		<PackageReference Include="WindowsXaml.ModernDotNet.BuildTools" Version="0.0.2" PrivateAssets="All" />
+		<ProjectReference Include="../WinUIProjection/WinUIProjection.csproj"/>
 	</ItemGroup>
 
 	<ItemGroup>
