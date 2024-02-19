@@ -9,6 +9,7 @@
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
 		<LangVersion>latest</LangVersion>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DefaultXamlRuntime>UAP</DefaultXamlRuntime>
 	</PropertyGroup>
 	
 	<ItemGroup>
