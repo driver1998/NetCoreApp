@@ -43,7 +43,7 @@
     <EntryPointProjectUniqueName>..\NetCoreApp\NetCoreApp.csproj</EntryPointProjectUniqueName>
     <EntryPointOverride>NetCoreApp.App</EntryPointOverride>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <PackageCertificateThumbprint>F54F097FFBABDA3358BBA4A2E000AAB7355D8B33</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>A23196DA72A16221DFD2872F75F82D0FB4215BF5</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -81,10 +81,10 @@
     <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Images\StoreLogo.png" />
     <Content Include="Images\Wide310x150Logo.scale-200.png" />
+    <None Include="NetCoreAppPackage_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" PrivateAssets="all" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\..\Props\NetCoreApp.UpdateEntryPoint.targets" />
