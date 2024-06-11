@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
 		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<Nullable>enable</Nullable>		
 		<Platforms>x86;x64;ARM64</Platforms>
 		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot>true</PublishAot>
@@ -12,12 +12,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.0-prerelease.240602.1" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.0-wux" />
 	</ItemGroup>
 
 	<PropertyGroup>
 		<CsWinRTFilters>
 			-include Windows.UI.Xaml
+			-include Windows.UI.Colors
+			-include Windows.UI.IColors
+			-include Windows.UI.ColorHelper
+			-include Windows.UI.IColorHelper
 			-include Windows.UI.Text
 			-exclude Windows.UI.Text.Core
 			-exclude Windows.UI.Text.FontStretch

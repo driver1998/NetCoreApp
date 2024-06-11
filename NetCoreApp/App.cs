@@ -1,8 +1,10 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.XamlTypeInfo;
+﻿using Microsoft.UI.Xaml.XamlTypeInfo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -28,76 +30,74 @@ namespace NetCoreApp
             return self;
         }
     }
+
     public partial class App : Application, IXamlMetadataProvider
     {
         private readonly List<IXamlMetadataProvider> _providers = new() {
-            new XamlControlsXamlMetaDataProvider()
+            new XamlControlsXamlMetaDataProvider(),
+            new NetCoreAppXamlMetadataProvider()
         };
 
         protected override void OnWindowCreated(WindowCreatedEventArgs args)
         {
-            this.Resources = new XamlControlsResources();
+            this.Resources = new MUXC.XamlControlsResources();
 
             var window = args.Window;
-            var page = new Page();
-            var content = new MUXC.NavigationView
+            var rootFrame = new Frame();
+            var navigationView = new MUXC.NavigationView
             {
                 PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.Left,
                 Margin = new Thickness(0, 48, 0, 0),
                 IsTitleBarAutoPaddingEnabled = false,
-                Content = new StackPanel
+                Content = rootFrame,
+                MenuItems =
                 {
-                    VerticalAlignment = VerticalAlignment.Center,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    Children =
+                    new MUXC.NavigationViewItem
                     {
-                        new TextBlock {
-                            Text = "UWP ❤️ NativeAOT",
-                            FontSize = 48
-                        },
-                        new TextBlock
-                        {
-                            Text = RuntimeInformation.FrameworkDescription
-                        },
-                        new TextBlock
-                        {
-                            Text = "IsDynamicCodeCompiled: " + RuntimeFeature.IsDynamicCodeCompiled
-                        },
-                        new TeachingTip
-                        {
-                            Name = "teachingTip",
-                            Title = "WinUI 🎉",
-                            Content = "This is TeachingTip from WinUI 2.",
-                            PreferredPlacement = TeachingTipPlacementMode.Bottom
-                        },
-                        new Button
-                        {                           
-                            Margin = new Thickness(0, 8, 0, 0),
-                            Content = "Show TeachingTip",
-                        }
-                        .With(btn =>
-                        {
-                            btn.Click += (sender, e) =>
-                            {
-                                var teachingTip = page.FindName("teachingTip") as TeachingTip;
-                                if (teachingTip != null)
-                                {
-                                    teachingTip.Target = sender as Button;
-                                    teachingTip.IsOpen = true;
-                                }
-                            };
-                        }),
+                        Content = "Home",
+                        Icon = new SymbolIcon { Symbol = Symbol.Home },
+                        Tag = "home"
+                    },
+                    new MUXC.NavigationViewItem
+                    {
+                        Content = "Todo",
+                        Icon = new FontIcon { Glyph = "\uE9D5" },
+                        Tag = "todo"
                     }
                 }
             };
-            page.Content = content;
-            window.Content = page;
-            BackdropMaterial.SetApplyToRootOrPageBackground(content, true);
+
+            var pages = new Dictionary<string, Type>
+            { 
+                { "home", typeof(MainPage) }, 
+                { "todo", typeof(TodoPage) }
+            };
+
+            navigationView.SelectionChanged += (s, e) =>
+            {
+                string tag = e.SelectedItemContainer.Tag.ToString() ?? "";
+                if (e.IsSettingsSelected)
+                {
+                    tag = "settings";
+                }
+                if (pages.TryGetValue(tag, out var targetPage))
+                {
+                    var currPage = rootFrame.CurrentSourcePageType;
+                    if (currPage != targetPage)
+                    {
+                        rootFrame.Navigate(targetPage, null, e.RecommendedNavigationTransitionInfo);
+                    }
+                }
+            };
+
+            window.Content = navigationView;
+            MUXC.BackdropMaterial.SetApplyToRootOrPageBackground(navigationView, true);
+            navigationView.SelectedItem = navigationView.MenuItems[0];            
 
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-            titleBar.ButtonInactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             window.Activate();
         }
 
