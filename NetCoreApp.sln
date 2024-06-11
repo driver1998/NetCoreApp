@@ -9,6 +9,8 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "NetCoreAppPackage", "NetCor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WuxProjection", "WuxProjection\WuxProjection.csproj", "{C3F630EA-307A-4BC7-97E8-D478B633A17F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIProjection", "WinUIProjection\WinUIProjection.csproj", "{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -62,6 +64,18 @@ Global
 		{C3F630EA-307A-4BC7-97E8-D478B633A17F}.Release|x64.Build.0 = Release|x64
 		{C3F630EA-307A-4BC7-97E8-D478B633A17F}.Release|x86.ActiveCfg = Release|Any CPU
 		{C3F630EA-307A-4BC7-97E8-D478B633A17F}.Release|x86.Build.0 = Release|Any CPU
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Debug|ARM64.Build.0 = Debug|ARM64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Debug|x64.ActiveCfg = Debug|x64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Debug|x64.Build.0 = Debug|x64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Debug|x86.Build.0 = Debug|Any CPU
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Release|ARM64.ActiveCfg = Release|ARM64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Release|ARM64.Build.0 = Release|ARM64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Release|x64.ActiveCfg = Release|x64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Release|x64.Build.0 = Release|x64
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Release|x86.ActiveCfg = Release|Any CPU
+		{067EAB37-3CDE-4E00-86A8-1DFEAE09132F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
