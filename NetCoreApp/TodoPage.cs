@@ -79,7 +79,10 @@ namespace NetCoreApp
                 }
             }
         }
-        public ObservableCollection<TodoListItem> TodoListItems { get; set; } = new();
+        public ObservableCollection<TodoListItem> TodoListItems { get; set; } = new()
+        {
+            new TodoListItem{ Title = "Test Item" }
+        };
 
         private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -106,40 +109,16 @@ namespace NetCoreApp
                 Children = {
                     new StackPanel
                     {
-                        Orientation = Orientation.Horizontal,
+                        Orientation = Orientation.Vertical,
                         Children =
                         {
                             new TextBox().With(textbox => textbox.SetBinding(TextBox.TextProperty, new Binding {Path  = new PropertyPath("Title"), Mode = BindingMode.TwoWay})),
-                            new TextBlock().With(textBlock => textBlock.SetBinding(TextBlock.TextProperty, new Binding {Path  = new PropertyPath("Title"), Mode = BindingMode.TwoWay})),
-                            new Button
-                            {
-                                Content = "Add"
-                            }
-                            .With(btn =>
-                            {
-                                btn.Click += (s, e) =>
-                                {
-                                    viewModel.TodoListItems.Add(new TodoListItem());
-                                };
-                            })
+                            new TextBlock().With(textBlock => textBlock.SetBinding(TextBlock.TextProperty, new Binding {Path  = new PropertyPath("Title"), Mode = BindingMode.OneWay})),
                         }
                     }
                     .With(stackPanel =>
                     {
                         stackPanel.SetValue(Grid.RowProperty, 0);
-                    }),
-                    new ListView
-                    {
-
-                    }
-                    .With(lv =>
-                    {
-                        lv.SetValue(Grid.RowProperty, 1);
-                        lv.SetBinding(ItemsControl.ItemsSourceProperty, new Binding
-                        {
-                            Mode = BindingMode.TwoWay,
-                            Path = new PropertyPath("TodoListItems")
-                        });
                     })
                 }
             };

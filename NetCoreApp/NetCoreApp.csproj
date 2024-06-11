@@ -18,9 +18,9 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.0-wux" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1-wux" />
 		<ProjectReference Include="../WuxProjection/WuxProjection.csproj" />
-		<ProjectReference Include="../WinUIProjection/WinUIProjection.csproj" />
+		<ProjectReference Include="../WinUIProjection/WinUIProjection.csproj" />		
 	</ItemGroup>
 
 </Project>
