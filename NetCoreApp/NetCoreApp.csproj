@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="$(MSBuildProjectDirectory)\..\Props\Mile.Xaml.props" />
+	<Import Project="$(MSBuildProjectDirectory)\..\Props\NetCoreApp.ModernDotNetUAPXamlCompiler.targets" />
+	
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<Platforms>x86;x64;ARM64</Platforms>
@@ -11,16 +14,17 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<DefaultXamlRuntime>UAP</DefaultXamlRuntime>
-		<IsAotCompatible>true</IsAotCompatible>
-		<PublishAot>true</PublishAot>
+		<!--<IsAotCompatible>true</IsAotCompatible>
+		<PublishAot>true</PublishAot>-->
 		<WindowsSdkPackageVersion>10.0.22621.35-preview</WindowsSdkPackageVersion>
 		<CsWinRTUIXamlProjections>WindowsUIXaml</CsWinRTUIXamlProjections>
+		<MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>
 	</PropertyGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1-wux" />
 		<ProjectReference Include="../WuxProjection/WuxProjection.csproj" />
-		<ProjectReference Include="../WinUIProjection/WinUIProjection.csproj" />		
+		<ProjectReference Include="../WinUIProjection/WinUIProjection.csproj" />
 	</ItemGroup>
 
 </Project>

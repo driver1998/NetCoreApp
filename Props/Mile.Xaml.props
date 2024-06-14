@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+   PROJECT:   Mouri Internal Library Essentials
+   FILE:      Mile.Xaml.props
+   PURPOSE:   MSBuild props file for Mile.Xaml
+
+   LICENSE:   The MIT License
+
+   DEVELOPER: AndromedaMelody (github.com/AndromedaMelody)
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <!-- Remove UWP Default Main Method -->
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+    <!-- Remove Microsoft.UI.Xaml.Markup -->
+    <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
+    <!-- Generate Default XAML Items for .Net SDK Style Project -->
+    <_EnableWindowsDesktopGlobbing>true</_EnableWindowsDesktopGlobbing>
+    <!-- Disable Microsoft.NET.Sdk.WindowsDesktop Toolchain -->
+    <ImportWindowsDesktopTargets>false</ImportWindowsDesktopTargets>
+    <!-- Disable WPF XAML Compiler Toolchain -->
+    <ImportFrameworkWinFXTargets>false</ImportFrameworkWinFXTargets>
+    <!-- Allow importing Assemblies by UseWindowsForms and UseWPF -->
+    <_EnableWindowsDesktopNETFrameworkImplicitReference>true</_EnableWindowsDesktopNETFrameworkImplicitReference>
+    <!-- Some properties and targets must be import after CommonTargets -->
+    <CustomAfterMicrosoftCommonTargets>
+      $(CustomAfterMicrosoftCSharpTargets);
+      $(MSBuildThisFileDirectory)\Mile.Xaml.AfterImport.targets;
+      $(MSBuildThisFileDirectory)\MrtCore.PriGen.targets;
+    </CustomAfterMicrosoftCommonTargets>
+  </PropertyGroup>
+
+</Project>

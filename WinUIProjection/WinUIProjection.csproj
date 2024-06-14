@@ -9,6 +9,7 @@
 		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot>true</PublishAot>
 		<WindowsSdkPackageVersion>10.0.22621.35-preview</WindowsSdkPackageVersion>
+		<CsWinRTUIXamlProjections>WindowsUIXaml</CsWinRTUIXamlProjections>
 	</PropertyGroup>
 
 	<ItemGroup>
