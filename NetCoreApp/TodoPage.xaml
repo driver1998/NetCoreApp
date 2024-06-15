@@ -12,10 +12,14 @@
         <wuxc:Grid.RowDefinitions>
             <wuxc:RowDefinition Height="Auto"/>
             <wuxc:RowDefinition/>
-            <wuxc:RowDefinition/>
         </wuxc:Grid.RowDefinitions>
         <wuxc:StackPanel wuxc:Grid.Row="0" Orientation="Vertical">
-            <wuxc:Button Click="Add_Click" Style="{StaticResource AccentButtonStyle}">Add</wuxc:Button>
+            <wuxc:Button Click="Add_Click" Style="{StaticResource AccentButtonStyle}">
+                <wuxc:StackPanel Orientation="Horizontal">
+                    <wuxc:SymbolIcon VerticalAlignment="Center" Symbol="Add"/>
+                    <wuxc:TextBlock Margin="4, 0, 0, 0" VerticalAlignment="Stretch" Text="Add"/>
+                </wuxc:StackPanel>
+            </wuxc:Button>
         </wuxc:StackPanel>
         <wuxc:ListView wuxc:Grid.Row="1" Margin="0, 16, 0, 0" ItemsSource="{x:Bind TodoListItems}">
             <wuxc:ListView.ItemTemplate>
@@ -32,15 +36,24 @@
                         </wuxc:StackPanel>
                         <wuxc:Grid.ContextFlyout>
                             <wuxc:MenuFlyout>
-                                <wuxc:MenuFlyoutItem Click="Edit_Click">Edit</wuxc:MenuFlyoutItem>
-                                <wuxc:MenuFlyoutItem Click="Delete_Click">Delete</wuxc:MenuFlyoutItem>
+                                <wuxc:MenuFlyoutItem Click="Edit_Click" Text="Edit">
+                                    <wuxc:MenuFlyoutItem.Icon>
+                                        <wuxc:SymbolIcon Symbol="Edit"/>
+                                    </wuxc:MenuFlyoutItem.Icon>
+                                </wuxc:MenuFlyoutItem>
+                                <wuxc:MenuFlyoutItem Click="Delete_Click" Text="Delete">
+                                    <wuxc:MenuFlyoutItem.Icon>
+                                        <wuxc:SymbolIcon Symbol="Delete"/>
+                                    </wuxc:MenuFlyoutItem.Icon>
+                                </wuxc:MenuFlyoutItem>
                             </wuxc:MenuFlyout>
                         </wuxc:Grid.ContextFlyout>
                     </wuxc:Grid>
                 </wux:DataTemplate>
             </wuxc:ListView.ItemTemplate>
         </wuxc:ListView>
-        <wuxc:ContentDialog x:Name="EditDialog" PrimaryButtonStyle="{StaticResource AccentButtonStyle}" PrimaryButtonText="OK" CloseButtonText="Cancel">
+        <wuxc:ContentDialog x:Name="EditDialog" DefaultButton="Primary" PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
+                            PrimaryButtonText="OK" CloseButtonText="Cancel">
             <wuxc:StackPanel Orientation="Vertical">
                 <wuxc:TextBox Header="Title" Text="{wuxd:Binding Title, Mode=TwoWay}"/>
                 <wuxc:TextBox Margin="0, 8, 0, 0" Header="Description" Text="{wuxd:Binding Description, Mode=TwoWay}"/>
