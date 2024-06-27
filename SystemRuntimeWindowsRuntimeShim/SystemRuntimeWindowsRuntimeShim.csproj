@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>System.Runtime.WindowsRuntime</AssemblyName>
+	<PublicSign>True</PublicSign>
+	<SignAssembly>true</SignAssembly>
+	<Version>4.0.0.0</Version>
+	<AssemblyOriginatorKeyFile>../Snks/ECMA.snk</AssemblyOriginatorKeyFile>	
+	<PublicKey>00000000000000000400000000000000</PublicKey>
+	<PublicKeyToken>b77a5c561934e089</PublicKeyToken>	  
+	<DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+</Project>

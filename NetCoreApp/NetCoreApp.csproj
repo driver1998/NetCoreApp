@@ -25,6 +25,12 @@
 		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1-wux" />
 		<ProjectReference Include="../WuxProjection/WuxProjection.csproj" />
 		<ProjectReference Include="../WinUIProjection/WinUIProjection.csproj" />
+		
+		<!-- HACK: Shim libraries, will be referenced in XAML compile only. -->
+		<!-- See NetCoreApp.ModernDotNetUAPXamlCompiler.targets -->
+		<ProjectReference Include="../SystemInteropServicesWindowsRuntimeShim/SystemInteropServicesWindowsRuntimeShim.csproj" ReferenceOutputAssembly="false"/>
+		<ProjectReference Include="../SystemRuntimeWindowsRuntimeShim/SystemRuntimeWindowsRuntimeShim.csproj" ReferenceOutputAssembly="false"/>
+		<ProjectReference Include="../SystemRuntimeWindowsRuntimeXamlShim/SystemRuntimeWindowsRuntimeXamlShim.csproj" ReferenceOutputAssembly="false"/>
 	</ItemGroup>
 
 </Project>

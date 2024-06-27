@@ -80,6 +80,10 @@ namespace NetCoreApp
         public TodoPage()
         {            
             this.InitializeComponent();
+            this.Loaded += (s, e) =>
+            {
+                Console.WriteLine("hello world");
+            };
         }
 
         public async void Add_Click(object sender, RoutedEventArgs e)
@@ -113,6 +117,7 @@ namespace NetCoreApp
                 item.Description = scratchItem.Description;
             }
             EditDialog.DataContext = null;
+            
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
