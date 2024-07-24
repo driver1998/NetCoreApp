@@ -1,10 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Windows.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using MUXC = Microsoft.UI.Xaml.Controls;
-using Windows.UI.Xaml;
-using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
 using System;
 
@@ -35,7 +30,7 @@ namespace NetCoreApp
                 {
                     rootFrame.Navigate(targetPage, null, args.RecommendedNavigationTransitionInfo);
                 }
-            }            
+            }
 
         }
     }

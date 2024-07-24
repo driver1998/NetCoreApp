@@ -1,20 +1,16 @@
 ﻿using Windows.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-using System.Collections.Specialized;
-using System.Collections;
+using WinRT;
 
 namespace NetCoreApp
 {
-    public partial class TodoListItem : INotifyPropertyChanged, ICloneable
+    [BindableCustomProperty]
+    public partial class TodoListItem : INotifyPropertyChanged
     {
         private string _title = "";
         public string Title 
@@ -61,12 +57,6 @@ namespace NetCoreApp
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-
         public event PropertyChangedEventHandler? PropertyChanged;
     }
     public partial class TodoPage : Page
@@ -78,7 +68,7 @@ namespace NetCoreApp
         };
 
         public TodoPage()
-        {            
+        {
             this.InitializeComponent();
             this.Loaded += (s, e) =>
             {
@@ -89,7 +79,7 @@ namespace NetCoreApp
         public async void Add_Click(object sender, RoutedEventArgs e)
         {
             var newItem = new TodoListItem();
-            EditDialog.DataContext = newItem;            
+            EditDialog.DataContext = newItem;
             var result = await EditDialog.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
