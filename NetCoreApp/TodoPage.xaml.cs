@@ -9,7 +9,7 @@ using WinRT;
 
 namespace NetCoreApp
 {
-    [BindableCustomProperty]
+    [GeneratedBindableCustomProperty]
     public partial class TodoListItem : INotifyPropertyChanged
     {
         private string _title = "";

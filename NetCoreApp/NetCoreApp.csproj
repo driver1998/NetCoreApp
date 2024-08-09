@@ -12,14 +12,22 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot>true</PublishAot>
-		<WindowsSdkPackageVersion>10.0.22621.37-preview</WindowsSdkPackageVersion>
+		<WindowsSdkPackageVersion>10.0.22621.39</WindowsSdkPackageVersion>
 		<DefaultXamlRuntime>UAP</DefaultXamlRuntime>
 	</PropertyGroup>
+
+	<!-- Temporary workaround, remove when https://github.com/dotnet/sdk/pull/41936 is available in the .NET SDK -->
+	<ItemGroup>
+		<CompilerVisibleProperty Include="CsWinRTUseWindowsUIXamlProjections" />
+		<RuntimeHostConfigurationOption Include="CSWINRT_USE_WINDOWS_UI_XAML_PROJECTIONS"
+										Value="$(CsWinRTUseWindowsUIXamlProjections)"
+										Trim="true" />
+	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.0-prerelease.240722.1" />
-		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.1.0-preview" />
-		<PackageReference Include="DisposableMemory.ModernNetUAP.WinUI" Version="2.8.6-preview" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
+		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.1.0" />
+		<PackageReference Include="DisposableMemory.ModernNetUAP.WinUI" Version="2.8.6" />
 	</ItemGroup>
 
 </Project>
