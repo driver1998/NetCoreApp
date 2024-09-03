@@ -12,7 +12,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot>true</PublishAot>
-		<WindowsSdkPackageVersion>10.0.22621.39</WindowsSdkPackageVersion>
+		<WindowsSdkPackageVersion>10.0.22621.42</WindowsSdkPackageVersion>
 		<DefaultXamlRuntime>UAP</DefaultXamlRuntime>
 	</PropertyGroup>
 
@@ -26,8 +26,8 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
-		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.1.0" />
-		<PackageReference Include="DisposableMemory.ModernNetUAP.WinUI" Version="2.8.6" />
+		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.2.2" />
+		<PackageReference Include="DisposableMemory.ModernNetUAP.WinUI" Version="2.8.6.1" />
 	</ItemGroup>
 
 </Project>
