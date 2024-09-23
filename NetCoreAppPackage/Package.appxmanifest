@@ -10,7 +10,7 @@
   <Identity
     Name="04b22972-0c51-435e-b1fb-b3959be6b0e4"
     Publisher="CN=driver1998"
-    Version="1.0.13.0" />
+    Version="1.0.16.0" />
 
   <mp:PhoneIdentity PhoneProductId="47c78b82-b520-4ede-9d72-5ecd9fa8c081" PhonePublisherId="fe1aeb97-ebca-4c58-9f85-d105a885dbfa"/>
 

@@ -41,7 +41,6 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <EntryPointProjectUniqueName>..\NetCoreApp\NetCoreApp.csproj</EntryPointProjectUniqueName>
-    <EntryPointOverride>NetCoreApp.App</EntryPointOverride>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <PackageCertificateThumbprint>A23196DA72A16221DFD2872F75F82D0FB4215BF5</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -88,9 +87,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" PrivateAssets="all" />
-  </ItemGroup>
-  <Import Project="$(MSBuildProjectDirectory)\..\Props\NetCoreApp.UpdateEntryPoint.targets" />
+  </ItemGroup>  
   <ItemGroup>
-    <ProjectReference Include="..\NetCoreApp\NetCoreApp.csproj" />
+	  <ProjectReference Include="..\NetCoreApp\NetCoreApp.csproj">
+		  <UseLowTrustEntryPoint>True</UseLowTrustEntryPoint>
+		  <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
+	  </ProjectReference>
   </ItemGroup>
 </Project>
