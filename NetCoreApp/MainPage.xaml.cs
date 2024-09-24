@@ -12,6 +12,7 @@ namespace NetCoreApp
             { "home", typeof(HomePage) },
             { "todo", typeof(TodoPage) },
             { "color", typeof(ColorPage) },
+            { "webview", typeof(WebViewPage) }
         };
 
         public MainPage()

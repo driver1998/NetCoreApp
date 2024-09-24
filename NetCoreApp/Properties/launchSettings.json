@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NetCoreApp": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    }
+  }
+}
