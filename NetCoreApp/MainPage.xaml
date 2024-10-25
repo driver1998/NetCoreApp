@@ -26,6 +26,11 @@
                     <wuxc:FontIcon Glyph="&#xE9D5;"/>
                 </muxc:NavigationViewItem.Icon>
             </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Content="WebView" Tag="webView">
+                <muxc:NavigationViewItem.Icon>
+                    <wuxc:FontIcon Glyph="&#xE774;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
         </muxc:NavigationView.MenuItems>
         <wuxc:Frame x:Name="rootFrame"/>
     </muxc:NavigationView>

@@ -46,7 +46,7 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
   </PropertyGroup>
@@ -86,12 +86,12 @@
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" PrivateAssets="all" />
-  </ItemGroup>  
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" PrivateAssets="all" />
+  </ItemGroup>
   <ItemGroup>
-	  <ProjectReference Include="..\NetCoreApp\NetCoreApp.csproj">
-		  <UseLowTrustEntryPoint>True</UseLowTrustEntryPoint>
-		  <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
-	  </ProjectReference>
+    <ProjectReference Include="..\NetCoreApp\NetCoreApp.csproj">
+      <UseLowTrustEntryPoint>True</UseLowTrustEntryPoint>
+      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
   </ItemGroup>
 </Project>
