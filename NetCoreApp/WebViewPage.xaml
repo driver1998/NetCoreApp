@@ -1,4 +1,4 @@
-﻿<wuxc:Page
+﻿<Page
     x:Class="NetCoreApp.WebViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,10 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:wuxc="using:Windows.UI.Xaml.Controls"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
-    <wuxc:Grid>
+    <Grid>
         <muxc:WebView2 Source="https://driver1998.github.io/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></muxc:WebView2>
-    </wuxc:Grid>
-</wuxc:Page>
+    </Grid>
+</Page>

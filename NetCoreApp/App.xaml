@@ -1,9 +1,8 @@
-﻿<wux:Application
+﻿<Application
   x:Class="NetCoreApp.App"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:wux="using:Windows.UI.Xaml">
-    <wux:Application.Resources>
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
         <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-    </wux:Application.Resources>
-</wux:Application>
+    </Application.Resources>
+</Application>
