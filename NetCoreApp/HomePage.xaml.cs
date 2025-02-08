@@ -11,17 +11,7 @@ namespace NetCoreApp
     {
         public int TestProperty { get; set; }
         public string FrameworkDescription => RuntimeInformation.FrameworkDescription;
-        public bool IsDynamicCodeCompiled
-        {
-            get
-            {
-#if COMPILING_XAML
-                return false;
-#else
-                return RuntimeFeature.IsDynamicCodeCompiled;
-#endif
-            }
-        }
+        public bool IsDynamicCodeCompiled => RuntimeFeature.IsDynamicCodeCompiled;
         public HomePage()
         {
             this.InitializeComponent();

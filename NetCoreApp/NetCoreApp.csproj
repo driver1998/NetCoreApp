@@ -3,27 +3,28 @@
 		<OutputType>WinExe</OutputType>
 		<Platforms>x86;x64;ARM64</Platforms>
 		<RootNamespace>NetCoreApp</RootNamespace>
-		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
-		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
+		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+		<PublishProfile>win-$(Platform).pubxml</PublishProfile>
+		<TargetPlatformVersion>10.0.26100.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-		<WindowsSdkPackageVersion>10.0.22621.54</WindowsSdkPackageVersion>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
+		<UseUwp>true</UseUwp>
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<DefaultLanguage>en-US</DefaultLanguage>
 	</PropertyGroup>
 
-	<!-- Temporary workaround, remove when https://github.com/dotnet/sdk/pull/41936 is available in the .NET SDK -->
 	<ItemGroup>
-		<CompilerVisibleProperty Include="CsWinRTUseWindowsUIXamlProjections" />
-		<RuntimeHostConfigurationOption Include="CSWINRT_USE_WINDOWS_UI_XAML_PROJECTIONS"
-										Value="$(CsWinRTUseWindowsUIXamlProjections)"
-										Trim="true" />
+		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.7" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.6" />
-		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.2.4" />
-		<PackageReference Include="DisposableMemory.ModernNetUAP.WinUI" Version="2.8.6.3" />
+		<AppxManifest Include="Package.appxmanifest" />
+		<Content Include="Images\**">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 </Project>
